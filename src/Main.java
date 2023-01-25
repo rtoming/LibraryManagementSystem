@@ -23,9 +23,13 @@ class Student {
 }
 
 
-
 class Book {
+    HashMap<Integer, String> bookHashMap = new HashMap<>();
 
+    void addBook() {
+        bookHashMap.put(11, "Book1");
+        bookHashMap.put(12, "Book2");
+    }
 }
 
 
