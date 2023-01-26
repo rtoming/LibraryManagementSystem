@@ -78,6 +78,7 @@ class Issue {
             System.out.println("...to issue, before, please reg yourself" + "\n");
             studentObj.regStudent();
         }
+        scanner.close();
     }
 
     void returnBook() {
