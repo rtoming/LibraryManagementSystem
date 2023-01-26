@@ -140,6 +140,27 @@ public class Main {
 
     public static void main(String[] args) {
 
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Your ID (101, 102, ...): ");
+        int studentID = scanner.nextInt();
 
+        Student studentObj = new Student();
+        studentObj.addStudent();
+        Issue issueObj = new Issue();
+
+        if (studentObj.studentHasMap.containsKey(studentID)) {
+            issueObj.getPurpose(studentID);
+        } else {
+            System.out.println("Be a member? yes or no");
+            String answer = scanner.next();
+
+            if (answer.equals("yes")) {
+                studentObj.regStudent();
+                issueObj.getPurpose(studentID);
+            } else {
+                System.out.println("Bye then...!");
+            }
+        }
+        scanner.close();
     }
 }
