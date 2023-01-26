@@ -86,7 +86,6 @@ class Issue {
         issueHashMap.put(101, "Book1"); // for testing
 
         if (studentObj.studentHasMap.containsKey(studentID)) {
-
             if (issueHashMap.containsKey(studentID)) {
                 System.out.println("Enter a return book name: " + bookObj.bookHashMap);
                 String returnBookName = scanner.nextLine();
@@ -110,8 +109,10 @@ class Issue {
                     System.out.println("Book: " + returnBookName);
                     System.out.println("Book is returned!");
                 } else {
-                    System.out.println("You have not issue this book yet...");
+                    System.out.println("Book is not issued...");
                 }
+            } else {
+                System.out.println("You have not issued any book!");
             }
 
         } else {
