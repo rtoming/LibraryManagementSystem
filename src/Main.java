@@ -122,10 +122,17 @@ class Issue {
         scanner.close();
     }
 
-    void getPurpose() {
+    void getPurpose(int studentID) {
+        System.out.println("Enter Your purpose: \"issue\" or \"return\"");
+        String purposeAnswer = scanner.next();
 
+        if (purposeAnswer.equals("issue")) {
+            issueBook(studentID);
+        } else if (purposeAnswer.equals("return")) {
+            returnBook(studentID);
+        }
+        scanner.close();
     }
-
 }
 
 
@@ -133,15 +140,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter Your ID (101, 102, ...): ");
-        int studentID = scanner.nextInt();
-
-        Issue issuedObj = new Issue();
-        issuedObj.returnBook(studentID);
-
-
-        scanner.close();
 
     }
 }
