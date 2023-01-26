@@ -20,6 +20,7 @@ class Student {
         System.out.println("You are now registered!" + "\n");
         addStudent();
         System.out.println("Our members now are: " + "\n" + studentHasMap);
+        scanner.close();
     }
 }
 
@@ -81,8 +82,43 @@ class Issue {
         scanner.close();
     }
 
-    void returnBook() {
+    void returnBook(int studentID) {
+        issueHashMap.put(101, "Book1"); // for testing
 
+        if (studentObj.studentHasMap.containsKey(studentID)) {
+
+            if (issueHashMap.containsKey(studentID)) {
+                System.out.println("Enter a return book name: " + bookObj.bookHashMap);
+                String returnBookName = scanner.nextLine();
+                int bookID = 0;
+
+                for (Map.Entry<Integer, String> entryReturn : bookObj.bookHashMap.entrySet()) {
+                    if (entryReturn.getValue().equals(returnBookName)) {
+                        bookID = entryReturn.getKey();
+                        break;
+                    }
+                }
+
+                if (issueHashMap.containsValue(returnBookName)) {
+                    issueHashMap.remove(studentID);
+                        System.out.println("Book is removed from student issueHashMap");
+                    bookObj.bookHashMap.put(bookID, returnBookName);
+                        System.out.println("Book is placed back to bookHashMap" + "\n");
+
+                    String studentName = studentObj.studentHasMap.get(studentID);
+                    System.out.println("Name: " + studentName);
+                    System.out.println("Book: " + returnBookName);
+                    System.out.println("Book is returned!");
+                } else {
+                    System.out.println("You have not issue this book yet...");
+                }
+            }
+
+        } else {
+            System.out.println("...must be registered and issued before" + "\n");
+            studentObj.regStudent();
+        }
+        scanner.close();
     }
 
     void getPurpose() {
@@ -101,7 +137,10 @@ public class Main {
         int studentID = scanner.nextInt();
 
         Issue issuedObj = new Issue();
-        issuedObj.issueBook(studentID);
+        issuedObj.returnBook(studentID);
+
+
+        scanner.close();
 
     }
 }
