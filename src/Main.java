@@ -20,7 +20,6 @@ class Student {
         System.out.println("You are now registered!" + "\n");
         addStudent();
         System.out.println("Our members now are: " + "\n" + studentHasMap);
-        scanner.close();
     }
 }
 
@@ -79,7 +78,6 @@ class Issue {
             System.out.println("...to issue, before, please reg yourself" + "\n");
             studentObj.regStudent();
         }
-        scanner.close();
     }
 
     void returnBook(int studentID) {
@@ -119,19 +117,19 @@ class Issue {
             System.out.println("...must be registered and issued before" + "\n");
             studentObj.regStudent();
         }
-        scanner.close();
     }
 
     void getPurpose(int studentID) {
         System.out.println("Enter Your purpose: \"issue\" or \"return\"");
         String purposeAnswer = scanner.next();
 
+        Issue issueObj = new Issue();
+
         if (purposeAnswer.equals("issue")) {
-            issueBook(studentID);
+            issueObj.issueBook(studentID);
         } else if (purposeAnswer.equals("return")) {
-            returnBook(studentID);
+            issueObj.returnBook(studentID);
         }
-        scanner.close();
     }
 }
 
@@ -151,7 +149,7 @@ public class Main {
         if (studentObj.studentHasMap.containsKey(studentID)) {
             issueObj.getPurpose(studentID);
         } else {
-            System.out.println("Be a member? yes or no");
+            System.out.println("Be a member? \"yes\" or \"no\"");
             String answer = scanner.next();
 
             if (answer.equals("yes")) {
@@ -161,6 +159,5 @@ public class Main {
                 System.out.println("Bye then...!");
             }
         }
-        scanner.close();
     }
 }
